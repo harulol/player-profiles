@@ -1,0 +1,40 @@
+name: Scala CI
+on:
+  push:
+    branches:
+      - '*'
+    paths-ignore:
+      - '*.md'
+      - 'LICENSE'
+  pull_request:
+    branches:
+      - '*'
+    paths-ignore:
+      - '*.md'
+      - 'LICENSE'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setting up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+      - name: Checking out API repository
+        uses: actions/checkout@v2
+        with:
+          repository: harulol/hikari-library
+          path: library
+      - name: Granting permissions to Gradle
+        run: chmod +x gradlew
+      - name: Building and publishing library
+        run: ./library/gradlew clean build publishToMavenLocal
+      - name: Checking out project
+        uses: actions/checkout@v2
+        with:
+          path: project
+      - name: Building project
+        run: |
+          cd project
+          sbt clean package assembly
