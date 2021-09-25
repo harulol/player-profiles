@@ -27,7 +27,7 @@ jobs:
           repository: harulol/hikari-library
           path: library
       - name: Granting permissions to Gradle
-        run: chmod +x gradlew
+        run: chmod +x ./library/gradlew
       - name: Building and publishing library
         run: ./library/gradlew clean build publishToMavenLocal
       - name: Checking out project
