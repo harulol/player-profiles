@@ -5,6 +5,7 @@ idePackagePrefix := Some("dev.hawu.plugins.playerprofiles")
 
 resolvers ++= Seq(
     Resolver.mavenLocal,
+    "jitpack" at "https://jitpack.io"
 )
 
 ThisBuild / assemblyShadeRules := Seq(
@@ -17,15 +18,15 @@ ThisBuild / assemblyMergeStrategy := {
     case PathList("junit", xs@_*) => MergeStrategy.discard
     case PathList("org", xs@_*) => MergeStrategy.discard
     case PathList("scala", xs@_*) => MergeStrategy.discard
-    case PathList(ps@_*) if ps.last.endsWith(".txt") || ps.last.endsWith(".properties") => MergeStrategy.first
+    case PathList("dev", "hawu", "plugins", "api", "reflect", xs@_*) => MergeStrategy.discard
+    case PathList("dev", "hawu", "plugins", "api", "nbt", xs@_*) => MergeStrategy.discard
+    case PathList("dev", "hawu", "plugins", "api", "events", xs@_*) => MergeStrategy.discard
+    case PathList(ps@_*) if ps.last.endsWith(".txt") || ps.last.endsWith(".properties") => MergeStrategy.discard
     case x =>
         val oldStrategy = (ThisBuild / assemblyMergeStrategy).value
         oldStrategy(x)
 }
 
 libraryDependencies ++= Seq(
-    "dev.hawu.plugins" % "hikari-library-core" % "1.1-SNAPSHOT" % Compile,
-    "dev.hawu.plugins" % "hikari-library-commands" % "1.0-SNAPSHOT" % Compile,
-    "dev.hawu.plugins" % "hikari-library-collections" % "1.0-SNAPSHOT" % Compile,
-    "dev.hawu.plugins" % "hikari-library-inventories" % "2.0-SNAPSHOT" % Compile,
+    "dev.hawu" % "hikari-library" % "master-SNAPSHOT" % Compile,
 )
