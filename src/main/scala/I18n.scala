@@ -1,9 +1,10 @@
 package dev.hawu.plugins.playerprofiles
 
-import dev.hawu.plugins.api.Strings
-import org.bukkit.command.CommandSender
-import org.bukkit.configuration.file.{FileConfiguration, YamlConfiguration}
-import org.bukkit.plugin.java.JavaPlugin
+import dev.hawu.plugins.api.*
+import dev.hawu.plugins.api.commands.*
+import org.bukkit.command.*
+import org.bukkit.configuration.file.*
+import org.bukkit.plugin.java.*
 
 import java.io.*
 
@@ -30,7 +31,10 @@ object I18n:
             return String.join(" ", config.getStringList(key))
         else return config.getString(key)
 
-    extension(key: String)
+    def reload: Unit =
+        messages = Some(YamlConfiguration.loadConfiguration(messagesFile.get))
+
+    extension (key: String)
         def tl(params: (String, Any)*): String =
             var value: String = ""
             if messages.get.get(key) == null && defaultMessages.get.get(key) == null then
@@ -45,6 +49,10 @@ object I18n:
 
             return Strings.color(value)
 
-    extension(sender: CommandSender)
+    extension (sender: CommandSender)
         def tl(key: String, params: (String, Any)*): Unit =
-            sender.sendMessage(key.tl(params:_*))
+            sender.sendMessage(key.tl(params: _*))
+
+    extension (source: CommandSource)
+        def tl(key: String, params: (String, Any)*): Unit =
+            source.sendMessage(key.tl(params: _*))

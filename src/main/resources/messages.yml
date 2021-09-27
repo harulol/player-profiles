@@ -1,0 +1,9 @@
+# Sent to the sender when a player specified is offline or could not be found.
+player-not-found: "&cThat player could not be found."
+
+# Sent to the sender when the issue paper could not be added to inventory
+# due to it being full.
+full-inventory: "&cYour inventory is currently full."
+
+# Sent to the sender after reloading.
+reloaded: "&aReloaded messages and configuration."

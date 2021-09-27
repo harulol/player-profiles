@@ -1,0 +1,17 @@
+name: PlayerProfiles
+version: 1.0-SNAPSHOT
+main: dev.hawu.plugins.playerprofiles.PlayerProfiles
+description: Identifications for players.
+authors: [ Hatsuharu, Homura ]
+depend: [ MultiJVMLang ]
+commands:
+  ppf:
+    aliases: [ playerprofiles ]
+    description: Base command.
+permissions:
+  ppf.register:
+    description: Allows access to the /register command.
+    default: op
+  ppf.reload:
+    description: Allows access to the /reload command.
+    default: op
