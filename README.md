@@ -10,6 +10,10 @@
 Descriptive profiles and identifications for players.
 </div>
 
+### Dependencies
+
+Depends on this project: [MultiJVMLang](https://github.com/multi-jvm-lang/releases).
+
 ### Commands
 
 Arguments in `<>` are required, while those that are in `[]` are optional.
