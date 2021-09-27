@@ -4,7 +4,7 @@
 # Available placeholders, applicable everywhere, probably self-explanatory:
 # %player's display name%, %player's name%, %player's custom name%, %player's uuid%
 # %registrar's display name%, %registrar's name%, %registrar's custom name%
-# %registration date%, %expiration date%
+# %registration date%
 # ---
 # PlaceholderAPI? Maybe in the future?
 id-template:
@@ -18,5 +18,7 @@ id-template:
     - "&fPlayer's UUID: &a%player's uuid%"
     - "&fRegistrar: &a%registrar's name%"
     - ""
-    - "&fGranted on &a%registration date%&f."
-    - "&fExpires on &a%expiration date%&f."
+    - "&fIssued on &a%registration date%"
+    - ""
+    - "&8Expires in &a%expiry%"
+    - "&8after registration."
