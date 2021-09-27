@@ -18,9 +18,6 @@ ThisBuild / assemblyMergeStrategy := {
     case PathList("junit", xs@_*) => MergeStrategy.discard
     case PathList("org", xs@_*) => MergeStrategy.discard
     case PathList("scala", xs@_*) => MergeStrategy.discard
-    case PathList("dev", "hawu", "plugins", "api", "reflect", xs@_*) => MergeStrategy.discard
-    case PathList("dev", "hawu", "plugins", "api", "nbt", xs@_*) => MergeStrategy.discard
-    case PathList("dev", "hawu", "plugins", "api", "events", xs@_*) => MergeStrategy.discard
     case PathList(ps@_*) if ps.last.endsWith(".txt") || ps.last.endsWith(".properties") => MergeStrategy.discard
     case x =>
         val oldStrategy = (ThisBuild / assemblyMergeStrategy).value
@@ -28,5 +25,8 @@ ThisBuild / assemblyMergeStrategy := {
 }
 
 libraryDependencies ++= Seq(
-    "dev.hawu" % "hikari-library" % "master-SNAPSHOT" % Compile,
+    "com.github.harulol.hikari-library" % "hikari-library-collections" % "c9e7ecf8",
+    "com.github.harulol.hikari-library" % "hikari-library-core" % "c9e7ecf8",
+    "com.github.harulol.hikari-library" % "hikari-library-commands" % "c9e7ecf8",
+    "com.github.harulol.hikari-library" % "hikari-library-inventories" % "c9e7ecf8",
 )
